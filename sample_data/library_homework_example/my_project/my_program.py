@@ -7,7 +7,10 @@ Created on Mon May 28 01:35:51 2018
 """
 
 import sys
-sys.path.append('../')
+#sys.path.append('../')
+sys.path.append('/Users/hemma/Documents/Code/Jupyter_NBooks/ILAS_python_for_engineers/sample_data/library_homework_example')
+
+
 import my_library
 
-my_library.my_func(2, 4)
+print(my_library.my_func(2, 4))
