@@ -1,0 +1,22 @@
+Sorting data frames
+
+import pandas as pd 
+url = 'https://raw.githubusercontent.com/justmarkham/DAT8/master/data/chipotle.tsv'
+data = pd.read_csv(url, sep = '\t')
+print(data.columns)
+data1 = data.dropna()
+for row,row in data1.iterrows():
+    print(row["item_name"],row['item_price'])
+print(data1.sort_values(by='item_price', ascending=False))
+data1.to_csv('sample_data/data1.csv')
+
+I'm sorry but I couldn't understood how to cast all prices as float data.
+
+
+Appending text files
+ 
+file = open("sample_data/dot.txt", "a")
+file.write("Carl Sagan, speech at Cornell University, October 13, 1994")
+file.close()
+
+
