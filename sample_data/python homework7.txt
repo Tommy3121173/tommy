@@ -1,0 +1,59 @@
+Fitting a wave
+
+
+import numpy as np
+t1 = np.array([0, 0.25, 0.5, 0.75])
+y1 = np.array([ 3, 1, -3, 1])
+A = np.zeros((4, 4))
+r = np.zeros(4)
+for i in range(4):
+    A[i] = np.cos(1 * np.pi * t1[i]), np.cos(2 * np.pi * t1[i]), \
+           np.cos(3 * np.pi * t1[i]), np.cos(4 * np.pi * t1[i])  
+    r[i] = y1[i]
+sol = np.linalg.solve(A, r)
+print('a,b,c,d: ',sol)
+
+t2 = np.linspace(0, 1, 100)
+y2 = sol[0] * np.cos(1 * np.pi * t2) + sol[1] * np.cos(2 * np.pi * t2) + \
+    sol[2] * np.cos(3 * np.pi * t2) + sol[3] * np.cos(4 * np.pi * t2)
+plt.plot(t2, y2, 'b', label='wave')
+plt.plot(t1, y1, 'ro', label='data')
+plt.legend(loc='best');
+
+
+Root finding
+
+
+import numpy as np
+import matplotlib.pyplot as plt
+import scipy
+%matplotlib inline
+#1
+def func(x):
+    return 2*((np.sin(x))**2) - 3*np.sin(x) + 1
+#plot to make a guess
+x1 = np.linspace(0,np.pi)
+plt.plot(x1, func(x1))
+plt.ylim([-0.2,1])
+#use the function fsolve
+from scipy.optimize import fsolve
+x1guess = 0.5,1.5,2.7
+x1_root = fsolve(func, x1guess)
+print(x1_root)
+#check the solution
+print(func(x1_root)) 
+
+#2
+def func1(x):
+    return 3*np.cos(x+1.4)
+#plot to make a guess
+x2 = np.linspace(10,25)
+plt.plot(x2, func1(x2))
+plt.ylim([0,1])
+#use the function fsolve
+from scipy.optimize import fsolve
+x2guess = 13,22
+x2_root = fsolve(func1, x2guess)
+print(x2_root)
+#check the solution
+print(func1(x2_root)) 
